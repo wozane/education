@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 require "csv"
 require "sunlight/congress"
 require "erb"
@@ -40,5 +41,3 @@ contents.each do |row|
 
   save_thank_you_letters(id,form_letter)
 end
-
-puts "EventManager Initialized!"
