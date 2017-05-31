@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 require "csv"
 require "sunlight/congress"
 require "erb"
