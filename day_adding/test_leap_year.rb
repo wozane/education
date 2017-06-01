@@ -17,5 +17,9 @@ class TestLeapYear < Minitest::Test
 
   def test_that_1999_is_not_eap_year
     assert_equal(false, year_leap?(1999))
-  end  
+  end
+
+  def test_that_1600_is_leap_year
+   assert_equal(true, year_leap?(1600))
+ end 
 end
