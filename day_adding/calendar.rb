@@ -1,17 +1,5 @@
-def year_leap?(year)
-  if year % 400 == 0
-    true
-  elsif year % 100 == 0
-    false
-  elsif year % 4 == 0
-    true
-  else
-    false
-  end
-end
-
-def add_one_day(year, month, day)
-  days_in_month = {
+class Calendar
+  DAYS_IN_MONTH = {
     1 => 31,
     2 => 28,
     3 => 31,
@@ -26,15 +14,34 @@ def add_one_day(year, month, day)
     12 => 31
   }
 
-  if month == 12 && day == days_in_month[month]
-    return "#{year+1}-1-1"
-  elsif month == 2 && day == 28 && year_leap?(year)
-    return "#{year}-#{month}-#{day+1}"
-  elsif month == 2 && day == 29 && year_leap?(year)
-    return "#{year}-#{month+1}-1"
-  elsif day == days_in_month[month]
-    return "#{year}-#{month+1}-1"
-  else 
-    return "#{year}-#{month}-#{day+1}"
+  def self.year_leap?(year)
+    if (year % 400).zero?
+      true
+    elsif (year % 100).zero?
+      false
+    elsif (year % 4).zero?
+      true
+    else
+      false
+    end
+  end
+
+  def self.add_one_day(year, month, day)
+    day_count = DAYS_IN_MONTH[month]
+
+    case
+    when month == 2 && year_leap?(year)
+      if day == 28
+        "#{year}-#{month}-#{day + 1}"
+      elsif day == 29
+        "#{year}-#{month + 1}-1"
+      end
+    when month == 12
+      "#{year + 1}-1-1"
+    when day == day_count
+      "#{year}-#{month + 1}-1"
+    else
+      "#{year}-#{month}-#{day + 1}"
+    end
   end
 end
