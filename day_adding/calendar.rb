@@ -29,16 +29,13 @@ class Calendar
   def self.add_one_day(year, month, day)
     day_count = DAYS_IN_MONTH[month]
 
-    case
-    when month == 2 && year_leap?(year)
-      if day == 28
-        "#{year}-#{month}-#{day + 1}"
-      elsif day == 29
-        "#{year}-#{month + 1}-1"
-      end
-    when month == 12
+    if month == 12 && day == 31
       "#{year + 1}-1-1"
-    when day == day_count
+    elsif month == 2 && day == 28 && year_leap?(year)
+      "#{year}-#{month}-#{day + 1}"
+    elsif month == 2 && day == 29 && year_leap?(year)
+        "#{year}-#{month + 1}-1"
+    elsif day == day_count
       "#{year}-#{month + 1}-1"
     else
       "#{year}-#{month}-#{day + 1}"
