@@ -7,12 +7,13 @@ require_relative '../lib/validate_phone_number.rb'
 
 class ValidatePhoneTest < Minitest::Test
 
-  def test_that_the_code_will_not_accept_invalid_format
-    assert_equal('Invalid phone number length', ValidatePhoneNumber.validate(nil))
-  end
-
   def test_the_number_of_digits
     assert_equal('Invalid phone number length', ValidatePhoneNumber.validate('123456'))
+  end
+
+  def test_that_the_code_will_not_accept_invalid_format
+    exception = assert_raises(ArgumentError) { ValidatePhoneNumber.validate(nil) }
+    assert_equal(exception.message, 'Invalid phone format')
   end
 
   def test_the_code_return_correct_number

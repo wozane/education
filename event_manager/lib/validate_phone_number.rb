@@ -1,11 +1,6 @@
 class ValidatePhoneNumber
   def self.validate(number)
-
-    begin
-      number.is_a?(String)
-    rescue ArgumentError => e
-      puts 'Invalid phone format'
-    end
+    raise ArgumentError.new('Invalid phone format') unless number.is_a?(String)
 
     case number.to_s.length
     when 10
