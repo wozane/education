@@ -23,4 +23,8 @@ class TestEuclid < Minitest::Test
   def test_gcd_method_5
     assert_equal(3, gcd(-3, 9))
   end
+
+  def test_gcd_method_6
+    assert_equal(2, gcd(12345678, 10))
+  end
 end

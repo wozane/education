@@ -2,15 +2,12 @@ def gcd(a, b)
   a = a.abs
   b = b.abs
 
-  if b.zero?
-    return a
-  else
+  while b != 0 do
     if a > b
       a -= b
-      gcd(a, b)
-    elsif a <= b
+    else a <= b
       b -= a
-      gcd(a, b)
     end
   end
+  return a
 end
